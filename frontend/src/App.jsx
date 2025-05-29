@@ -7,12 +7,17 @@ function App() {
   const [backendMessage, setBackendMessage] = useState('');
   const [count, setCount] = useState(0);
 
+  // Use local backend if in development, else use deployed URL
+  const backendUrl = import.meta.env.MODE === 'development'
+    ? 'http://localhost:3001' 
+    : 'https://tm-backend-9329.onrender.com';
+
   useEffect(() => {
-    fetch('/api/test')
+    fetch(`${backendUrl}/api/test`) 
       .then(res => res.json())
       .then(data => setBackendMessage(data.message))
       .catch(() => setBackendMessage('Failed to fetch backend message'));
-  }, []);
+  }, [backendUrl]);
 
   return (
     <>
