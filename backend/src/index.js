@@ -7,5 +7,5 @@ app.get('/api/test', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Backend running on port ${PORT}`);
+    console.log(`Backend running on port ${PORT} (Render will route requests here)`);
 });
